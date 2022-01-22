@@ -81,7 +81,11 @@ namespace WPF_Calc
 
         private void Button_Click_Back(object sender, RoutedEventArgs e)
         {
+            if (text.Length > 0)
             text = text.Remove(text.Length - 1);
+            if (text == "")
+            textBlock2.Text = "0";
+            else
             textBlock2.Text = text;
         }
 
@@ -143,16 +147,6 @@ namespace WPF_Calc
             first = true;
             temp = result;
         }
-        public void Button_MouseEnter(object sender, MouseEventArgs e)
-        {
-            (sender as Button).FontSize = 24;
-        }
-
-        public void Button_MouseLeave(object sender, MouseEventArgs e)
-        {
-            (sender as Button).FontSize = 18;
-        }
-
-
+        
     }
 }
