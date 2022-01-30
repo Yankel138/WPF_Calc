@@ -37,6 +37,11 @@ namespace WPF_Calc
                 textBlock2.Text = "";
                 first = false;
             }
+            if (textBlock2.Text == "0")
+            {
+                textBlock2.Text = "";
+                text = "";
+            }
             text += (sender as Button).Content;
             textBlock2.Text += (sender as Button).Content;
         }
@@ -82,11 +87,15 @@ namespace WPF_Calc
         private void Button_Click_Back(object sender, RoutedEventArgs e)
         {
             if (text.Length > 0)
-            text = text.Remove(text.Length - 1);
+                text = text.Remove(text.Length - 1);
             if (text == "")
-            textBlock2.Text = "0";
+            {
+                textBlock2.Text = "0";
+                first = true;
+            }
+
             else
-            textBlock2.Text = text;
+                textBlock2.Text = text;
         }
 
         private void Button_Click_Action(object sender, RoutedEventArgs e)
@@ -124,6 +133,8 @@ namespace WPF_Calc
 
         private void Button_Click_Ravno(object sender, RoutedEventArgs e)
         {
+            try
+            {
             textBlock1.Text = result.ToString() + operation + text + "=";
             temp = Convert.ToDouble(text);
             text = "";
@@ -146,7 +157,11 @@ namespace WPF_Calc
             operation = "";
             first = true;
             temp = result;
+            }
+            catch (Exception ex) //выведет сообщение если ошибка
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
-        
     }
 }
