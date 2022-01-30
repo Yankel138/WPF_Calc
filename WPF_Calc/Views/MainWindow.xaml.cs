@@ -30,7 +30,7 @@ namespace WPF_Calc
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e) // ввод цифр
         {
             if (first)
             {
@@ -46,7 +46,7 @@ namespace WPF_Calc
             textBlock2.Text += (sender as Button).Content;
         }
 
-        private void Button_Click_Oper(object sender, RoutedEventArgs e)
+        private void Button_Click_Oper(object sender, RoutedEventArgs e) // обработка операций
         {
             if (operation == "")
             {
@@ -65,7 +65,7 @@ namespace WPF_Calc
             first = true;
         }
 
-        private void Button_Click_Clear(object sender, RoutedEventArgs e)
+        private void Button_Click_Clear(object sender, RoutedEventArgs e) // очистка
         {
             result = 0;
             temp = 0;
@@ -76,7 +76,7 @@ namespace WPF_Calc
             first = true;
         }
 
-        private void Button_Click_ClearEnter(object sender, RoutedEventArgs e)
+        private void Button_Click_ClearEnter(object sender, RoutedEventArgs e) // очистка ввода
         {
             temp = 0;
             text = "";
@@ -84,7 +84,7 @@ namespace WPF_Calc
             first = true;
         }
 
-        private void Button_Click_Back(object sender, RoutedEventArgs e)
+        private void Button_Click_Back(object sender, RoutedEventArgs e) // удаление последнего набранного символа
         {
             if (text.Length > 0)
                 text = text.Remove(text.Length - 1);
@@ -98,7 +98,7 @@ namespace WPF_Calc
                 textBlock2.Text = text;
         }
 
-        private void Button_Click_Action(object sender, RoutedEventArgs e)
+        private void Button_Click_Action(object sender, RoutedEventArgs e) 
         {
             temp = Convert.ToDouble(textBlock2.Text);
             switch ((string)(sender as Button).Content)
@@ -131,7 +131,7 @@ namespace WPF_Calc
         }
 
 
-        private void Button_Click_Ravno(object sender, RoutedEventArgs e)
+        private void Button_Click_Ravno(object sender, RoutedEventArgs e) // расчет введенной операции
         {
             try
             {
@@ -158,7 +158,7 @@ namespace WPF_Calc
             first = true;
             temp = result;
             }
-            catch (Exception ex) //выведет сообщение если ошибка
+            catch (Exception ex) //выведет сообщение при возникновении ошибки
             {
                 MessageBox.Show(ex.Message);
             }
